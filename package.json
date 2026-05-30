@@ -1,0 +1,16 @@
+{
+  "name": "daily-ai-brief-to-feishu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "brief": "node scripts/daily-ai-brief.mjs",
+    "check": "node --check scripts/daily-ai-brief.mjs"
+  },
+  "dependencies": {
+    "openai": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
