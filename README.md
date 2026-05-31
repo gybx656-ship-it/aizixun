@@ -1,19 +1,19 @@
 # Daily AI Brief to Feishu
 
-每天北京时间 9 点自动生成过去 24 小时 AI 领域重要更新，并发送到飞书群。
+每天北京时间 9 点自动抓取过去 24 小时 AI 领域公开来源更新，并发送到飞书群。
 
 ## 工作方式
 
 - GitHub Actions 在云端定时运行，所以电脑关机、Codex 没打开也能执行。
-- 脚本调用 OpenAI Responses API 的联网搜索能力生成中文简报。
+- 免费版不调用 OpenAI API，不需要 OpenAI 额度。
+- 脚本抓取公开 RSS、Hacker News、Hugging Face Papers 等来源，并用规则筛选生成中文简报。
 - 脚本通过飞书群自定义机器人 Webhook 发送消息。
 
 ## 你需要准备
 
 1. 一个 GitHub 仓库，把本目录内容推上去。
-2. 一个 OpenAI API Key。
-3. 一个飞书群自定义机器人 Webhook。
-4. 如果飞书机器人开启了签名校验，还需要机器人 Secret。
+2. 一个飞书群自定义机器人 Webhook。
+3. 如果飞书机器人开启了签名校验，还需要机器人 Secret。
 
 ## GitHub 配置
 
@@ -23,13 +23,8 @@
 
 添加 Repository secrets：
 
-- `OPENAI_API_KEY`
 - `FEISHU_WEBHOOK_URL`
 - `FEISHU_SIGN_SECRET`，如果飞书机器人没开签名校验，可以不填。
-
-可选添加 Repository variable：
-
-- `OPENAI_MODEL`，默认是 `gpt-5`。
 
 ## 测试
 
@@ -45,7 +40,6 @@ npm run check
 如果只想本地生成简报但不发飞书：
 
 ```powershell
-$env:OPENAI_API_KEY="你的OpenAI API Key"
 $env:DRY_RUN="1"
 npm run brief
 ```
