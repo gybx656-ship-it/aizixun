@@ -48,7 +48,7 @@ const response = await client.responses.create({
   reasoning: { effort: "medium" },
   tools: [
     {
-      type: "web_search",
+      type: "web_search_preview",
       user_location: {
         type: "approximate",
         country: "CN",
